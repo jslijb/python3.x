@@ -1,0 +1,1464 @@
+<!DOCTYPE html><html><head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=49">
+<title>项目详情 - 借款标</title>
+
+
+
+<link href="/images/favicon.ico" rel="shortcut icon">
+<link href="/css/public.css" rel="stylesheet">
+<link href="/css/iconfont/iconfont.css" rel="stylesheet">
+
+<script src="//hm.baidu.com/hm.js?f62f8d3a48825ea9b02e49a9820b8c33"></script><script src="/js/jquery/jquery.min.js"></script>
+<script src="/js/public.js"></script>
+<script src="/js/jquery/jquery.placeholder.min.js"></script>
+
+<link href="/js/dialog/dialog-plus.css" rel="stylesheet">
+<script src="/js/dialog/dialog-plus.js"></script><style type="text/css"></style>
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?f62f8d3a48825ea9b02e49a9820b8c33";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+  
+
+<link href="/css/page.css" rel="stylesheet">
+<script src="/js/jquery/jquery.simplePagination.js"></script>
+<script src="/js/jquery/jquery.countdown.js"></script>
+
+<link href="/js/jBox/jBox.css" rel="stylesheet">
+<script src="/js/jBox/jBox.min.js"></script>
+
+<link href="/js/PhotoSwipe/photoswipe.css" rel="stylesheet">
+<script src="/js/PhotoSwipe/photoswipe.min.js"></script>
+<script src="/js/PhotoSwipe/photoswipe-ui-default.js"></script>
+<script src="/js/PhotoSwipe/init.js"></script>
+<script type="text/javascript" charset="utf-8" async="" src="//isite.baidu.com/lmp/js/clue-api.min.js?d=17508&amp;clientType=kst&amp;_d=1512711971037921" id="ks_ol_scriptId0"></script><script type="text/javascript" charset="utf-8" async="" src="https://pv.kuaishang.cn/gip.j?_d=151271197103834" id="ks_ol_scriptId1"></script><script type="text/javascript" charset="utf-8" async="" src="https://kefu5.kuaishang.cn/bs/code/bindBid.j?ri=18353710914&amp;compId=875288&amp;_d=1512711971318461" id="ks_ol_scriptId2"></script></head>
+
+<body><div id="k_s_ol_miniWinSm" class="ks_ol_comm_div"></div><div id="k_s_ol_chatWinSm" class="ks_ol_comm_div"></div><div id="k_s_ol_chatWin" class="ks_ol_comm_div"></div><div id="k_s_ol_inviteWin" class="ks_ol_comm_div" style="display: none; width: auto; z-index: 2147483647; position: fixed !important; left: 50%; margin-left: -200px !important; top: 50%; margin-top: -100px !important;"><div id="k_s_ol_inviteWin_fl"><div style="BACKGROUND-IMAGE: url(//file.kuaishang.cn/images/code2012/invite/53.png); POSITION: relative; WIDTH: 248px; HEIGHT: 140px" id="divbg" class="seldiv" action="frame" name="背景图片">
+ <div id="div19" style="z-index: 0; position: absolute; width: 90px; height: 28px; top: 100px; left: 144px; font-size: 18px; color: rgb(255, 255, 255); text-align: center; line-height: 26px; cursor: pointer;" name="在线咨询按钮" orig_x="169" orig_y="124" orig_index="0"><strong>点击咨询</strong></div>
+  <div style="position: absolute; width: 23px; height: 23px; top: 29px; left: 214px; cursor: pointer; line-height: 0px;" id="div23" class="seldiv" name="关闭按钮" orig_x="316" orig_y="7" orig_index="0"></div>
+</div></div></div><div id="k_s_ol_floatWin" class="ks_ol_comm_div"></div><div id="ks_ol_swfDivid" class="ks_ol_comm_div" style="height: 0px;"></div>
+
+
+
+
+
+<style>
+/*-----top-----*/
+#top {
+	position: relative;
+	z-index: 2;
+	height: 35px;
+	font-size: 12px;
+	background-color: #f0f0f0;
+}
+.top-cont {
+	color: #999;
+	width: 1200px; margin: 0 auto;
+}
+.top-cont i {
+	line-height: 1;
+	vertical-align: middle;
+}
+.top-cont p  {
+	float: left;
+	line-height: 35px;
+}
+.top-cont p i {
+	font-size: 20px;
+	color: #EA544A;
+	margin-right: 5px;
+	color: #878787;
+}
+.top-cont .wchat {
+	position: relative;
+	display: inline-block;
+	cursor: pointer;
+	perspective: 900px;
+}
+.top-cont .wchat i {
+	font-size: 20px;
+}
+.top-cont .wchat .code {
+	position: absolute;
+	visibility: hidden;
+	opacity: 0;
+    left: -30px;
+	transition: all 0.4s ease-in-out;
+	-webkit-transition: all 0.4s ease-in-out;
+	transform: rotateX(-40deg);
+	transform-origin: 50% 0%;
+}
+.top-cont .wchat:hover .code {
+	visibility: visible;
+	opacity: 1;
+	transform: rotateX(0);
+}
+
+.top-cont ul {
+	float: right;
+	padding: 9px 0;
+	box-sizing: border-box;
+}
+.top-cont li {
+	float: left;
+	height: 17px; line-height: 17px;
+	padding: 0 15px;
+    border-left: 1px solid #ddd;
+}
+.top-cont li:first-child {
+	border-left: none;
+}
+.top-cont li a {
+	color: #999;
+	font-size: 12px;
+}
+.top-cont li a:hover {
+	color: #e14149;
+}
+
+.top-cont .App {
+	color: #e14149;
+}
+.top-cont .App span {
+	display: inline-block;
+}
+.top-cont .App:hover span {
+	animation: App 500ms ease forwards;
+	-webkit-animation: App 500ms ease forwards;
+}
+@keyframes App {
+	20% {transform: rotate(20deg);}
+	40% {transform: rotate(-20deg);}
+	60% {transform: rotate(20deg);}
+	80% {transform: rotate(-20deg);}
+	100% {transform: rotate(0deg);}
+}
+.top-cont .App i {
+	position: relative;
+	top: -1px;
+	color: #e14149;
+}
+/*-----nav-----*/
+#nav {
+	height: 70px;
+	background-color: #fff;
+}
+.nav-cont {
+	width: 1200px; margin: 0 auto;
+}
+.nav-cont > a {
+	float: left;
+	padding-top: 15px;
+	width: 180px; height: 70px;
+	box-sizing: border-box;
+}
+.nav-cont ul {
+	float: right;
+}
+.nav-cont li {
+	position: relative;
+    float: left;
+    padding: 0 10px;
+    line-height: 70px;
+}
+.nav-cont li a {
+	display: inline-block;
+    width: 80px;
+    height: 32px; line-height: 32px;
+    text-align: center;
+    font-size: 16px;
+    color: #000;
+    border-radius: 5px;
+}
+.nav-cont li a:hover {
+	color: #FFF;
+	background-color: #EA544A;
+	transition: all 100ms linear;
+}
+</style>
+
+<div id="top">
+	<div class="top-cont" clear="">
+		<p>
+			<i class="iconfont"></i>客服热线：400-999-6202（周一至周五：9:00-18:00）
+		</p>
+		<ul>
+			
+				<li><a href="/access/login.jsp" class="login">登录</a></li>
+				<li><a href="/regCustomer.action">免费注册</a></li>
+			
+			<li><a href="/cms/answer" target="_blank">帮助中心</a></li>
+			<li>
+				<a href="/html/app/index.html" class="App">
+					<span><i class="iconfont"></i></span> 手机APP投资</a>
+			</li>
+			<li>
+				<span class="wchat">
+					<i class="iconfont"></i> 微信订阅 
+					<div class="code"><img src="/images/code/Wechat-140.jpg" width="140px"></div>
+				</span>
+			</li>
+		</ul>
+	</div>
+</div>
+
+<div id="nav">
+	<div class="nav-cont" clear="">
+		<a href="/">
+			<img src="/images/logo-home.png" width="94%">
+		</a>
+		<span title="挂牌前海股权交易中心" style="display: inline-block;height:70px;line-height: 70px;color: #333;text-shadow: 1px 0px 1px rgba(0,0,0,0.2);">前海股交所挂牌代码：367617</span>
+      	<ul clear="">
+			<li><a href="/">首页</a></li>
+			<li><a href="/invest/financeProjecList.action">我要投资</a></li>
+			<li><a href="/invest/borrowForm.action">我要借款</a></li>
+			<li><a href="/guide/newcomer/financial">新手指引</a></li>
+			<li><a href="/cms/we/info/">信息披露</a></li>
+			<li><a href="/ma/loadAccountDetailPage.action">我的账户</a></li>
+      	</ul>
+	</div>
+</div>
+
+<input type="hidden" id="session" value="">
+
+<div class="route">
+	<span><i class="iconfont"></i> 您所在的位置： </span>
+	<a href="/">首页</a> &gt; 
+	<a href="/invest/financeProjecList.action">我要投资</a> &gt; 月月盈2017031704（赎楼过桥）
+</div>
+<div class="bid-top">
+	<div class="bido-info">
+		<div class="tit">
+			<h5>月月盈2017031704（赎楼过桥）</h5>
+			<div class="ibdtime" style="color: #e14149;">竞标已结束</div>
+		</div>
+		<dl>
+			<dd>
+				<font>8</font>
+				
+				<p>预期年化</p>
+			</dd>
+			<dd>
+				<b>7</b>
+				<span style="font-size: 20px;">天</span>
+				<p>投资期限</p>
+			</dd>
+			<dd>
+				<b>3,000,000.00 </b><span style="font-size: 20px;"> 元</span>
+				
+				<p>融资金额</p>
+			</dd>
+		</dl>
+		<div style="text-align: center;">
+			<div class="progress" style="width: 600px;" title="100%">
+				<span style="width: 100%;"></span>
+			</div>
+		</div>
+		<p class="tips">最低加入金额 100 元，上限 1,000,000.00元</p>
+		<div class="des">
+			<span>用途：赎楼过桥</span>
+			<span>还款方式：到期一次性还本付息
+				
+			</span>
+			<span>还款日期：2017-03-24</span>
+		</div>
+		<p class="jxrq">预计起息日：2017-03-17</p>
+	</div>
+	<div class="bido-form">
+		<div class="userYue">
+			<font>账户余额：</font>
+			<span><a href="/access/login.jsp">登录后可见</a></span> 
+			<a target="_blank" href="/ma/preChargeMag.action">充值</a>
+		</div>
+		<form name="adcing" onkeydown="if(event.keyCode==13)return false;">
+			<div class="balance">
+				剩余可加入金额：
+				<span>0</span>元
+			</div>
+			<div class="edu">
+				<input type="text" id="jine" jine="" required="" nober="" maxlength="11" placeholder="100元起投">
+				<button type="button" ani="">全额</button>
+			</div>
+			<div class="yuji">
+				<span class="fl">预计收益：￥<i>0.00</i>元</span>
+			</div>
+			<div class="do">
+				
+					
+					
+					
+					
+					
+						<button type="button">还款完成</button>
+					
+					
+				
+			</div>
+			<p class="tip">
+				<i class="iconfont"></i>
+				使用<a href="http://www.ibdp2p.com/html/app/index.html" style="color: #e14149;line-height: 30px;">爱本地app</a>投标可使用红包/加息券！
+			</p>
+		</form>
+	</div>
+</div>
+<br>
+<div class="ibd-info" ts="">
+	<div class="nav" clear="">
+		<span class="curr">借款描述</span>
+		<span>借款记录</span>
+		<span>资质/证明文件</span>
+		<span>风险保障</span>
+	</div>
+	<dl>
+		<dd class="curr ibd-info-des">
+			
+			
+				<p></p><p>
+	一、项目简介：该笔业务属于非交易性赎楼业务，赎楼金额为300万元。深圳**电子科技有限公司以借款人名下房产为抵押物在深圳**银行贷款余额约420万元，自有资金120万；负债较低，信用良好；深圳**电子科技有限公司于2004年2月27日成立，注册资金1000万，主营电子产品研发及销售；现新的按揭银行已出批复，房产评估价约721万，该银行批复额度为500万。此业务相关情况经我司风控审核，情况全部属实，爱本地风险管理部将严格监控借款人借款用途，资金定向支付给原按揭银行。
+</p>
+<p>
+	二、借款用途：资金用于还清原按揭银行贷款余额。
+</p>
+<p>
+	三、还款来源：新房产抵押贷款放款500万元。
+</p>
+<p>
+	四、信用与涉诉情况：
+ 1.经人民银行征信系统查询个人征信良好，当前无拖欠信息，往来无逾期记录； 
+2.经全国法院信息查询系统显示，客户当前无执行中的诉讼案件。
+</p><p></p>
+			
+		</dd>
+		<dd class="ibd-info-annal">
+			<p>该借款人在平台逾期次数：<b>0</b></p>
+			<p>该借款人在平台逾期总金额：<b>0.00</b> 元</p>
+		</dd>
+		<dd>
+			<div class="ibd-info-quali" data-pswp-uid="1">
+				
+				
+					<figure>
+						<a href="https://www.ibdp2p.com//attach/mbmResource/creditcontract/6531/5c15057f-40ad-4b14-8657-1e535d086eb7.jpg" data-size="566x800">
+							<img src="https://www.ibdp2p.com//attach/mbmResource/creditcontract/6531/5c15057f-40ad-4b14-8657-1e535d086eb7.jpg" alt="Image description">
+						</a>
+						<figcaption itemprop="caption description">身份证</figcaption>
+					</figure>
+					
+					
+				
+					<figure>
+						<a href="https://www.ibdp2p.com//attach/mbmResource/creditcontract/6531/c0a9d240-a852-40ba-9259-3238d9f97580.jpg" data-size="566x800">
+							<img src="https://www.ibdp2p.com//attach/mbmResource/creditcontract/6531/c0a9d240-a852-40ba-9259-3238d9f97580.jpg" alt="Image description">
+						</a>
+						<figcaption itemprop="caption description">配偶身份证</figcaption>
+					</figure>
+					
+					
+				
+					<figure>
+						<a href="https://www.ibdp2p.com//attach/mbmResource/creditcontract/6531/98d2e590-61eb-499c-b8aa-a9fde206cf6a.jpg" data-size="566x800">
+							<img src="https://www.ibdp2p.com//attach/mbmResource/creditcontract/6531/98d2e590-61eb-499c-b8aa-a9fde206cf6a.jpg" alt="Image description">
+						</a>
+						<figcaption itemprop="caption description">结婚证</figcaption>
+					</figure>
+					
+					
+				
+					<figure>
+						<a href="https://www.ibdp2p.com//attach/mbmResource/creditcontract/6531/9adb9daa-0964-44c3-836d-7dd33ef4b371.jpg" data-size="800x566">
+							<img src="https://www.ibdp2p.com//attach/mbmResource/creditcontract/6531/9adb9daa-0964-44c3-836d-7dd33ef4b371.jpg" alt="Image description">
+						</a>
+						<figcaption itemprop="caption description">房产证</figcaption>
+					</figure>
+					
+					
+				
+				
+			</div>
+		</dd>
+		<dd>
+			<p>
+	<span style="white-space:normal;line-height:2;">1.借款人已签署了借款合同，并办理了其他相关的手续。 </span> 
+</p>
+<p>
+	<span style="white-space:normal;line-height:2;">2.目前我司已控制了新按揭银行按揭款回款帐户，收取该帐户的银行卡原件及持卡人身份证原件。 </span> 
+</p>
+<p>
+	<span style="white-space:normal;line-height:2;">3.此业务所有手续办理已由我司指定风控人员全程跟踪及监督。 </span> 
+</p>
+<p>
+	<span style="white-space:normal;line-height:2;">4.该笔业务由深圳市亿坤资产管理有限公司提供</span><span style="line-height:2;"></span><span style="line-height:2;">保证担保。</span> 
+</p>
+			
+		</dd>
+	</dl>
+</div>
+<div class="ibd-info">
+	<div class="nav" clear="">
+		<span class="curr">投标记录<font id="bidNum">（共16条记录）</font></span>
+	</div>
+	<dl>
+		<dd class="curr">
+			<div class="join">
+				<table>
+					<colgroup>
+						<col width="25%">
+						<col width="25%">
+						<col width="25%">
+						<col width="25%">
+					</colgroup>
+					<thead>
+						<tr>
+							<td>投标人</td>
+							<td>加入金额</td>
+							<td>投标时间</td>
+							<td>投标类型</td>
+						</tr>
+					</thead>
+					<tbody><tr><td>147*****507</td><td>891,653.26</td><td>03/17 15:17:18</td><td>APP投标</td></tr><tr><td>159*****472</td><td>200.00</td><td>03/17 15:17:07</td><td>APP投标</td></tr><tr><td>181*****999</td><td>990,000.00</td><td>03/17 15:16:15</td><td>APP投标</td></tr><tr><td>134*****846</td><td>630.00</td><td>03/17 15:15:49</td><td>APP投标</td></tr><tr><td>137*****371</td><td>200.00</td><td>03/17 15:15:46</td><td>APP投标</td></tr><tr><td>138*****737</td><td>10,378.45</td><td>03/17 15:15:45</td><td>APP投标</td></tr><tr><td>151*****133</td><td>200.00</td><td>03/17 15:15:43</td><td>APP投标</td></tr><tr><td>134*****333</td><td>990,000.00</td><td>03/17 15:15:36</td><td>APP投标</td></tr><tr><td>138*****573</td><td>5,701.00</td><td>03/17 15:15:31</td><td>APP投标</td></tr><tr><td>139*****457</td><td>200.00</td><td>03/17 15:15:24</td><td>APP投标</td></tr></tbody>
+				</table>
+				<div class="Pages PageB light-theme simple-pagination"><ul><li class="disabled"><span class="current prev">上一页</span></li><li class="active"><span class="current">1</span></li><li><a href="#page-2" class="page-link">2</a></li><li><a href="#page-2" class="page-link next">下一页</a></li></ul></div>
+				
+			</div>
+		</dd>
+	</dl>
+</div>
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+	<div class="pswp__bg"></div>
+	<div class="pswp__scroll-wrap">
+		<div class="pswp__container">
+			<div class="pswp__item"></div>
+			<div class="pswp__item"></div>
+			<div class="pswp__item"></div>
+		</div>
+		<div class="pswp__ui pswp__ui--hidden">
+			<div class="pswp__top-bar">
+				<div class="pswp__counter"></div>
+				<button class="pswp__button pswp__button--close" title="关闭 (Esc)"></button>
+				<button class="pswp__button pswp__button--fs" title="切换全屏"></button>
+				<button class="pswp__button pswp__button--zoom" title="放大缩小"></button>
+				<div class="pswp__preloader">
+					<div class="pswp__preloader__icn">
+						<div class="pswp__preloader__cut">
+							<div class="pswp__preloader__donut"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+				<div class="pswp__share-tooltip"></div>
+			</div>
+			<button class="pswp__button pswp__button--arrow--left" title="上一张">
+           </button>
+			<button class="pswp__button pswp__button--arrow--right" title="下一张">
+           </button>
+			<div class="pswp__caption">
+				<div class="pswp__caption__center"></div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<style>
+.mianFooter {
+	border-top: 1px solid #eee;
+	background-color: #f5f5f5;
+}
+.mianFooter .cont {
+	width: 1200px;
+	margin: 0 auto;
+	padding: 30px 0;
+}
+
+.foot-hrefs li {
+	float: left;
+	width: 160px;
+}
+.foot-hrefs li h5 {
+	font-weight: 400;
+	font-size: 16px;
+	margin-bottom: 20px;
+}
+.foot-hrefs li p {
+	line-height: 30px;
+	padding-left: 3px;
+}
+.foot-hrefs li a {
+	color: #666;
+}
+
+.foot-apps dd {
+	display: table-cell;
+	vertical-align: middle;
+	text-align: center;
+	height: 170px; width: 140px;
+}
+.foot-apps dd p {
+    line-height: 30px;
+    color: #666;
+    font-size: 12px;
+}
+.foot-apps dd i {
+	font-size: 20px;
+    color: #999;
+    margin-right: 3px;
+    vertical-align: middle;
+}
+/*---客服热线---*/
+.service {
+	position: relative;
+	margin-top: 20px;
+	line-height: 26px;
+    color: #333;
+}
+.service h5 {
+	font-size: 16px;
+	font-weight: 400;
+}
+.service p {
+	color: #999;
+	font-size: 12px;
+}
+.service .tel {
+	font-family: Arial,"microsoft yahei";
+	font-size: 30px;
+	margin: 14px 0;
+}
+.copyright {
+	background-color: #323441;
+}
+.copyright > div {
+	color: #999;
+	width: 1200px;
+	margin: 0 auto;
+}
+.copyright p {
+	line-height: 60px;
+}
+.copyright span {
+	margin-right: 15px;
+}
+.copyright ul {
+	float: right;
+}
+.copyright li {
+	float: left;
+    margin-top: 15px;
+}
+.copyright li a {
+	display: inline-block;
+	margin-left: 15px;
+	height: 30px;
+}
+
+/*-----右下角菜单-----*/
+.ibd-tools {
+	position: fixed;
+	height: 220px;
+	left: 50%; bottom: 240px;
+	margin-left: 610px;
+	z-index: 3;
+}
+.ibd-tools:before {
+	position: absolute;
+	content: '';
+	top: -105px; left: -31px;
+	width: 122px; height: 100px;
+	background-image: url(/images/footer-dun.png);
+	background-repeat: no-repeat;
+}
+.ibd-tools a {
+	position: relative;
+	display: block;
+	width: 40px; line-height: 40px;
+	height: 40px;
+	text-align: center;
+	margin-bottom: 4px;
+	background-color: #ccc;
+	border-radius: 5px;
+	overflow: hidden;
+}
+.ibd-tools i {
+	font-size: 22px;
+	color: #fff;
+	line-height: 40px;
+}
+.ibd-tools a span {
+	position: absolute;
+	top: 0; left: 0;
+	height: 37px;
+	padding-top: 3px;
+	width: 40px;
+	line-height: 16px;
+	border-radius: 5px;
+	font-size: 12px;
+	color: #fff;
+	background-color: #eb544b;
+	z-index: -1;
+}
+.ibd-tools a:hover {
+	overflow: visible;
+}
+.ibd-tools a:hover span {
+	z-index: 1;
+}
+.ibd-tools .toggleInfo {
+	display: none;
+	position: absolute;
+	right: 55px; top: 0;
+	width: 0px;
+	z-index: -1;
+}
+.workTime {
+	width: 110px; line-height: 42px;
+	text-align: center;
+	color:#fff;
+	background-color: #eb544b;
+}
+.ibd-tools .weixincall {
+	width: 218px; height: 105px;
+	padding: 20px 0;
+	border-radius: 5px;
+	background-color: #eb544b;
+}
+.ibd-tools .toggleInfo [class^='dec'] {
+	position: absolute;
+    font-family: simsun;
+    text-decoration: none;
+	right: -12px; top: 0px;
+	font-size: 30px;
+}
+.ibd-tools .toggleInfo .dec1 {
+	right: -15px;
+	color: #eb544b;
+}
+.ibd-tools .toggleInfo .dec2 {
+	right: -14px;
+	color: #eb544b;
+}
+.ibd-tools .weixincall li {
+	float: left;
+	width: 50%;
+	line-height: 20px;
+	color: #fff;
+}
+/*----------收益计算----------*/
+#calculate {
+	display: none;
+	position: fixed;
+	z-index: 4;
+	top: 50%; left: 50%;
+	width: 530px;
+	margin: -194px 0 0 -265px;
+	background-color: #fff;
+	border-radius: 5px;
+	transform: skewX(20deg);
+	-ms-transform: skewX(0deg);
+	-moz-transform: skewX(20deg);
+	-webkit-transform: skewX(20deg);
+}
+#calculate.show {
+	animation: show1 .3s forwards;
+	-moz-animation: show1 .3s forwards;
+	-webkit-animation: show1 .3s forwards;
+}
+@-moz-keyframes show1{
+	from{-moz-transform: skew(20deg);}
+	to{-moz-transform: skew(0deg);}
+}
+@-webkit-keyframes show1{
+	from{-webkit-transform: skew(20deg);}
+	to{-webkit-transform: skew(0deg);}
+}
+@keyframes show1{
+	from{transform: skew(20deg);}
+	to{transform: skew(0deg);}
+}
+#calculate h4 {
+	position: relative;
+	padding: 0 22px;
+	line-height: 45px;
+	font-size: 16px;
+	font-weight: 400;
+	color: #fff;
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+	background-color: #ea544a;
+}
+#calculate h4 i {
+	color: #fff;
+	cursor: pointer;
+	transition: all .5s;
+	-webkit-transition: all .5s;
+	-moz-transition: all .5s;
+}
+#calculate h4 i:hover {
+	transform: rotate(180deg);
+	-webkit-transform: rotate(180deg);
+	-moz-transform: rotate(180deg);
+}
+#calculate .cont {
+	padding: 30px 22px 10px 22px;
+	background-color: #fff;
+}
+#calculate .cont:after {
+	content: '';
+	display: block;
+	height: 0;
+	clear: both;
+}
+.calform {
+	width: 300px;
+	margin-right: 20px;
+}
+.calform dd {
+	line-height: 40px;
+	margin-bottom: 20px;
+}
+.calform dd label {
+	position: relative;
+	display: inline-block;
+	border: 1px solid #e0e0e0;
+	border-radius: 5px;
+}
+.calform dd label span {
+	display: inline-block;
+	padding: 0 14px;
+	text-align: center;
+	background-color: #eee;
+}
+.calform dd label .mninput {
+	padding: 0;
+	width: 49px;
+	text-align: left;
+	text-indent: 10px;
+	background-color: #fff;
+	border-left: 1px solid #e0e0e0;
+	border-top-right-radius: 5px;
+	border-bottom-right-radius: 5px;
+	cursor: pointer;
+}
+.calform dd label .mnDown {
+	top: 10px; right: 5px;
+	font-size: 14px;
+}
+.calform .mnSelect {
+	 width: 48px;
+	 margin-left: 108px;
+	 border-radius: initial;
+}
+.calform .mnSelect li {
+	height: 26px;
+	line-height: 26px;
+	text-align: left;
+	text-indent: 10px;
+	background-color: #fff;
+}
+.calform .mnSelect li:hover {
+	background-color: #eee;
+	cursor: pointer;
+}
+.calform dd label input {
+	height:40px;
+	border: none;
+	height: 20px\0;
+	padding-left: 10px;
+	padding: 8px 0 7px 10px\0;
+}
+.calform dd.type {
+    text-align: justify;
+    *text-justify:inter-ideograph;
+}
+.calform dd.type label {
+    vertical-align: top;
+    *display:inline;
+    *zoom:1;
+}
+.calform dd.type label.last-child {
+	margin-top: 5px;
+	height: 41px;
+}
+.calform dd.type span {
+	font-size: 12px;
+	padding: 0 14px;
+	cursor: pointer;
+	border-radius: 5px;
+	background-color: #fff;
+}
+.calform dd.type span i {
+	color: #ea544a;
+	margin-left: 5px;
+}
+.calform dd.type span:hover,
+.calform dd.type span.active {
+	background-color: #eee;
+}
+.result {
+	line-height: 28px;
+	font-size: 15px;
+}
+.result i {
+	font-style: normal;
+	font-size: 18px;
+	font-family: arial;
+	color: red;
+}
+.result span {
+	margin-left: 5px;
+}
+.result li {
+	margin-top: 13px;
+}
+.result li a {
+	display: inline-block;
+	vertical-align: middle;
+	width: 70px; line-height: 40px;
+	text-align: center;
+}
+.result li a:first-child {
+	background-color: #ea544a;
+	color: #fff;
+	border-radius: 5px;
+}
+.result li a:first-child:hover {
+	background-color: #E4382E;
+}
+.hints {
+	padding: 0 22px;
+	background-color: #f2f2f2;
+	border-bottom-left-radius: 5px;
+	border-bottom-right-radius: 5px;
+}
+.hints h5 {
+	font-size: 16px;
+	color: #ea544a;
+	font-weight: 400;
+	line-height: 45px;
+	border-bottom: 1px solid #e0e0e0;
+}
+.hints p {
+	font-size: 13px;
+	line-height: 24px;
+	text-indent: 2em;
+	color: #333;
+	padding: 10px 0 30px 0;
+}
+.backdrop {
+    display: none;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 3;
+    background-color: rgba(0,0,0,0.5);
+    filter: progid:DXImageTransform.Microsoft.Gradient(startColorStr=#80000000,endColorStr=#80000000);
+}
+
+/*-----模拟select-----*/
+ul.mnSelect {
+	display: none;
+	position: absolute;
+	z-index: 3;
+	margin-left: 90px;
+	border: 1px solid #dddddd;
+	border-radius: 5px;
+}
+ul.mnSelect li {
+	display: none;
+}
+.mnSelect li {
+	height: 42px;
+	line-height: 42px;
+	text-indent: 20px;
+	background-color: #FFFFFF;
+	border-top: 1px solid #dddddd;
+	cursor: pointer;
+}
+.mnSelect li:hover {
+	background-color: #f2f2f2;
+}
+.mnSelect li:first-child {
+	border-top: none;
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+}
+.mnSelect li.last-child {
+	border-bottom-left-radius: 5px;
+	border-bottom-right-radius: 5px;
+}
+.mnSelect [class^='dec'] {
+	position: absolute;
+    font-family: simsun;
+    text-decoration: none;
+	font-size: 24px;
+	width: 17px; height: 19px;
+	top: -31px; right: 20px;
+}
+.mnSelect .dec1 {
+	top: -32px;
+	color: #dddddd;
+}
+.mnSelect .dec2 {
+	color: #ffffff;
+}
+i.mnDown {		/*--模拟下拉三角图标--*/
+	position: absolute;
+	line-height: 20px;
+	color: #666666;
+	top: 23px;
+}
+</style>
+
+<div class="mianFooter">
+	<div class="cont" clear="">
+		<ul class="foot-hrefs fl">
+			<li>
+				<h5>新手指南</h5>
+				<p><a href="/cms/answer">如何注册</a></p>
+				<p><a href="/cms/answer">如何投资</a></p>
+				<p><a href="/cms/answer">账户问题</a></p>
+				<p><a href="/cms/answer">帮助中心</a></p>
+			</li>
+			<li>
+				<h5>诚信保障</h5>
+				<p><a href="/news/7/29">数据安全</a></p>
+				<p><a href="/news/7/28">隐私安全</a></p>
+				<p><a href="/news/7/27">资金安全</a></p>
+				<p></p>
+			</li>
+			<li>
+				<h5>关于我们</h5>
+				<p><a href="/cms/we/info/">公司介绍</a></p>
+				<p><a href="/aboutus/9/32">注册协议</a></p>
+				<p><a href="/aboutus/9/33">政策法规</a></p>
+				<p><a href="/aboutus/9/31">联系我们</a></p>
+			</li>
+		</ul>
+		<dl class="foot-apps fl">
+			<dd>
+				<img src="/images/code/Wechat-100.jpg" width="100">
+				<p>官方微信</p>
+			</dd>
+			<dd>
+				<img src="/images/code/App-100.jpg" width="100">
+				<p>爱本地APP</p>
+			</dd>
+		</dl>
+		<div class="service fr">
+			<h5>客服热线</h5>
+			<div class="tel">400-999-6202</div>
+			<p>服务时间：周一到周五(9:00-18:00)</p>
+		</div>
+	</div>
+	<div class="copyright">
+		<div clear="">
+			<p class="fl">
+				<span>深圳首金誉互联网金融服务有限公司 Copyright Reserved 2014-2017</span>
+				<span style="margin-right: 50px;">粤ICP备15016787号-1</span>
+				<span style="color: #6f7072;">市场有风险 投资需谨慎 最终收益以实际为准</span>
+			</p>
+			<ul>
+				<li><a href="http://szcert.ebs.org.cn/93a1251d-6f1c-4afa-82c9-e0dc623899f5" target="_blank">
+					<img width="30px" src="/images/footer-Supervision.gif" title="工商网监">
+				</a></li>
+				<li><a href="//www.anquan.org/authenticate/cert/?site=www.ibdp2p.com/&amp;at=business" target="_blank">
+					<img src="/images/footer-Verification.png" title="行业验证">
+				</a></li>
+			</ul>
+		</div>
+	</div>
+</div>
+
+<div class="ibd-tools">
+	<a href="https://kefu5.kuaishang.cn/bs/im.htm?cas=59105___875288&amp;fi=67718" target="_blank">
+		<i class="iconfont"></i>
+		<span>在线<br>客服<br></span>
+        <div class="toggleInfo" data-width="108">
+			<div class="workTime">9:00 - 18:00
+		    	<s class="dec1">◆</s>
+				<s class="dec2">◆</s>
+			</div>
+		</div>
+	</a>
+	<a href="javascript:void(0);">
+		<i class="iconfont"></i>
+        <span>微信<br>客服</span>
+        <div class="toggleInfo" data-width="218">
+	        <div class="weixincall">
+	            <li><img src="/images/code/Waiter a.jpg" width="80"><br>微信客服1</li>
+	            <li><img src="/images/code/Waiter b.jpg" width="80"><br>微信客服2</li>
+	        	<s class="dec1">◆</s>
+				<s class="dec2">◆</s>
+	        </div>
+        </div>
+	</a>
+	<a href="javascript:void(0);" onclick="$(&quot;.backdrop&quot;).show();$(&quot;#calculate&quot;).fadeIn().addClass(&quot;show&quot;)">
+		<i class="iconfont"></i>
+		<span>收益<br>计算</span>
+	</a>
+	<a href="/html/app/index.html" target="_blank">
+		<i class="iconfont"></i>
+		<span>手机<br>App</span>
+	</a>
+	<a href="javascript:void(0);" onclick="$('html,body').animate({scrollTop:0},500)" class="goTop" style="display: none;">
+		<i class="iconfont"></i>
+		<span style="z-index: 2;display: none;">回到<br>顶部</span>
+	</a>
+</div>
+
+<div id="calculate">
+	<h4>收益计算器<i class="iconfont fr" onclick="$(&quot;.backdrop,#calculate&quot;).fadeOut(&quot;fast&quot;)"></i></h4>
+	<div class="cont">
+		<dl class="calform fl">
+			<dd>
+				<label style="width: 298px;"><span>金额</span><input type="text" id="tjine" maxlength="10" onkeyup="clearNoNum(this)" placeholder="金额" style="width: 150px;" value="0"></label>
+			</dd>
+			<dd>
+				<label>
+					<span>期限</span><input id="qiCi" type="text" maxlength="3" onlynum="" placeholder="期限" style="width: 42px" value="0"><span class="mninput dataType" data-val="1" data-mname="mnData">天<i class="iconfont mnDown"></i></span>
+					<ul class="mnSelect mnData">
+						<li data-val="1" data-target="dataType">天</li>
+						<li data-val="2" data-target="dataType">月</li>
+					</ul>
+				</label>
+				<label>
+					<span>利率</span><input type="text" id="liLv" maxlength="4" numpole="" placeholder="利率" value="0" style="width: 40px" onkeyup="if(isNaN(value))execCommand('undo')" onafterpaste="if(isNaN(value))execCommand('undo')"><i style="margin: 0 10px 0 5px;color: red;">%</i>
+				</label>
+			</dd>
+			<dd class="type" id="fangShi">
+				<label><span data-val="1" class="active">一次性<i class="iconfont"></i></span></label>
+				<label><span data-val="2">等额本息</span></label>
+				<label><span data-val="3">按月付息到期还本</span></label>
+			</dd>
+		</dl>
+		<div class="result fl">
+			<p>本息合计：</p>
+			<i id="benXi">0.00</i><span>元</span>
+			<p>利息收入：</p>
+			<i id="liXi">0.00</i><span>元</span>
+			<li>
+				<a href="javascript:void(0);" onclick="calculator()">计算</a>
+				<a href="javascript:void(0);" onclick="$('#calculate input,.result i').val('').text('0')">重置</a>
+			</li>
+		</div>
+	</div>
+	<div class="hints">
+		<h5>收益计算器简介</h5>
+		<p>收益计算器用于计算您投资将会获得的收益，投资更加透明高效，固定日还款项目由于计算方式略有不同，具体收益请参见投资后的同级统计。</p>
+	</div>
+</div>
+<div class="backdrop"></div>
+<script type="text/javascript" src="https://kefu5.kuaishang.cn/bs/ks.j?cI=875288&amp;fI=67718" charset="utf-8"></script><style type="text/css">.ks_ol_comm_div,.ks_ol_comm_div div{margin:0px;background-color:transparent;position:static;height:initial;width:initial;} .ks_probe_a {cursor:pointer;} #k_s_ol_newMsgWin_fl *{padding: 0px;margin: 0px;width:auto;}</style><script type="text/javascript" src="https://kefu5.kuaishang.cn/bs/js/online/code/json2.js" charset="utf-8"></script>
+
+<script>
+//打开计算器
+function calculator(){
+	var amount = parseInt($("#tjine").val()) || 0;							//投资金额
+	var deadline  = parseInt($("#qiCi").val()) || 0;						//投资期限
+	var dataType = parseInt($("#calculate .mninput").attr("data-val"));		//投资期限（天/月）
+	var rate = GetInterestRate(dataType,parseFloat($("#liLv").val())) || 0;	//利率
+	var loanType = $("#fangShi").find("span.active").data("val");			//还款方式
+	var lixi = 0;
+
+	if(loanType == 2) {
+		$.each(ECAI(amount,deadline,rate), function(i,v) {
+			lixi += v.ChangHaiLiXi;
+		});
+	} else {
+		lixi = amount * deadline * rate;
+	}
+	benxi = amount + lixi;
+	$("#benXi").text(ForDight(benxi, 2));
+	$("#liXi").text(ForDight(lixi, 2));
+}
+function ECAI(jine,qici,lilv) {				//等额本息列表
+	var benxi = jine * lilv * Math.pow(lilv + 1, qici) / (Math.pow(lilv + 1, qici) - 1);
+	var shengyubenjin = jine;
+
+	var feeInfos = [];
+	for(var i=1; i<= qici; i++) {
+		var lixi = shengyubenjin * lilv;
+		var benjin = benxi - lixi;
+		shengyubenjin -= benjin;
+		var feeInfo = {
+			Qici : i,
+			ChangHaiBenJin : benjin,
+			ChangHaiBenXi : benxi,
+			ChangHaiLiXi : lixi,
+			ShengYuBenJin : shengyubenjin
+		};
+		feeInfos.push(feeInfo);
+	}
+	return feeInfos;
+}
+
+function GetInterestRate(dateType, rate) {		//根据借款周期单位和利率换算实际利率
+	var interestRate = 0;
+	if (dateType == 2) {
+		interestRate = rate / 1200;
+	} else if (dateType == 1) {
+		interestRate = rate / 36000;
+	}
+	return interestRate;
+}
+function ForDight(Dight, How) {
+	Dight = Math.round(Dight * Math.pow(10, How)) / Math.pow(10, How);
+	return Dight;
+}
+//选择还款类型
+$("#calculate .type").on('click','span',function(){
+	var i = $(this).parents("dd").find('i');
+	$("#calculate .type span").removeClass("active");
+	$(this).addClass("active");
+	i.appendTo($(this));
+	if($(this).data('val') != 1) {
+		$(".mnSelect li:last").click();
+		$(".mninput").off("click").css('background-color','#eee');
+	} else {
+		$(".mninput").on('click',mninput).css('background-color','#fff');
+	}
+})
+//模拟下拉
+$("#calculate .mninput").on('click',mninput);
+function mninput(){
+	var obj = $(this).data("mname");
+	$("."+obj).show().children("li").slideDown('fast');
+}
+$("#calculate .mnSelect li").on("click",function(){
+	var obj = $(this).data("target");
+	var val = $(this).data("val");
+	var str = $(this).text();
+	$("."+obj).attr("data-val",val).html(str+'<i class="iconfont mnDown">&#xe63a;</i>');
+	$(".mnSelect").hide().children("li").slideUp();
+});
+
+$(".ibd-tools a").hover(function(){
+	var width = $(this).find(".toggleInfo").data('width');
+	$(this).find(".toggleInfo").show().animate({width:width},100)
+},function(){
+	$(this).find(".toggleInfo").hide().animate({width:0},100)
+})
+//限制输入数字
+$("[onlyNum]").onlyNum();
+
+//回到顶部
+$(window).on("scroll.goTop",function(){
+	if($(document).scrollTop() >= 600){
+		$(".goTop").fadeIn('fast');
+	} else if($(document).scrollTop() < $(window).height() * 0.6){
+		$(".goTop").fadeOut('slow');
+	}
+});
+$(".goTop").hover(function(){
+	$(this).find("span").toggle();
+});
+</script>
+<script>
+var userBalance = 0;	//用户余额
+var login = false;
+
+$(function(){
+	$(".ibd-info[ts] .nav").on("click","span",function(){
+		if(!$(this).is(".curr")) {
+			$(this).addClass("curr").siblings().removeClass("curr");
+			$(".ibd-info[ts] dd").removeClass("curr").eq($(this).index()).addClass("curr");
+		}
+	});
+	$("#jine").on("keyup",showValue);	//收益计算
+	$('input').placeholder();
+	
+	new jBox('Mouse',{
+		attach: '.jbox',
+		fade: 100,
+		getContent: 'tips',
+		position: {x: 'right', y: 'bottom'},
+		theme: 'TooltipBorder'
+	});
+	
+	$.each($(".ibd-info-quali a"), function(i,v) {
+		var url = $(v).attr("href");
+		var img = $("<img src=" + url + " />");
+		img.load(function(){
+			$(v).attr("data-size",this.naturalWidth + "x" + this.naturalHeight)
+		})
+	});
+		
+	initPhotoSwipeFromDOM('.ibd-info-quali');
+	
+	//登录验证
+	$.get('/isLogin.action',function(data){
+		if(data.success) {
+			risk.detec();	//风险评估
+			login = true;
+			$.get('/ma/loadAccountDetail.action;jsessionid=AC506FEAB2240166AD66F20BB7118242',function(data){
+				$(".userYue span").html(numcode(userBalance = data.availableAmount)+" 元");
+				$(".edu button").on("click",function(){
+					var v = Math.min(userBalance,3000000,(3000000*100-3000000*100)/100);
+					$("#jine").val(v).focus();
+				});
+			},'json');
+		} else {
+			$(".userYue span").html('<a href="/access/login.jsp">登录后可见</a>');
+		}
+	},'json');
+	
+	//标的信息
+	jQuery.ajax({
+		url: '/invest/creditBidInfo.action;jsessionid=AC506FEAB2240166AD66F20BB7118242',
+		type: "GET",
+		cache: false,
+		async: true,
+		data: { creditId: 6531},
+		dataType: "json",
+		success: function (json) {
+			//竞标状态
+			if(json.creditStatus < 3) {
+				$(".jxrq").show();
+             	$(".ibdtime").text("竞标未开始");
+			} else if(json.creditStatus > 3) {
+             	$(".ibdtime").text("竞标已结束");
+			} else {
+				if (json.investRestTime < 0) {	/*--竞标倒计时已结束--*/
+					$(".ibdtime").text("竞标已结束");
+				} else {
+					if (json.publishedRestTime <= 0) {/*--发标倒计时已结束，当前为竞标阶段--*/
+						$(adcing).verify();
+						$(".ibdtime").Countdown({
+                    		format: "竞标中 : <font>hours:</font><font>minutes:</font><font>seconds</font>",
+							seconds: json.investRestTime,
+							timerEndBlackFun: function(){
+								$(".do button").attr("class","offibd").prop("disabled",true).html("竞标已结束");
+							}
+						});
+					} else {	/*--当前为发标倒计时阶段（发标倒计时结束后，进入竞标倒计时）--*/
+                    	$(".do button").html("即将发布");
+						$(".ibdtime").Countdown({
+                    		format: "即将发布 : <font>hours:</font><font>minutes:</font><font>seconds</font>",
+                    	    seconds: json.publishedRestTime,
+                    	    endTimeHtml: "",
+                    	    timerEndBlackFun: function(){
+                                $(adcing).verify();
+                    	    	$(".ibdtime").Countdown({
+                    	    		format: "竞标中 : <font>hours:</font><font>minutes:</font><font>seconds</font>",
+                                    seconds: json.investRestTime,
+									timerEndBlackFun: function(){
+										$(".do button").attr("class","offibd").prop("disabled",true).html("竞标已结束");
+									}
+                                });
+                    	    }
+                    	});
+					}
+				}
+			};
+		}
+	})
+});
+$.fn.lock = function(s){		//锁定投资，防止重复
+	if(s) {
+		$(this).html('转入中...<img src="../images/loading.gif" />').addClass("off");
+	} else {
+		$(this).removeClass("off").html("立即转入");
+	}
+};
+
+//表单验证
+$.fn.verify = function(){
+	var obj = $(this);
+	var pass = true;
+	var v;
+	
+	$(".do button").attr("class","onibd").prop("disabled",false).html("立即投资");
+	var ze = (3000000*100-3000000*100)/100;	//剩余可加入金额
+	
+	obj.on("blur","input",function(){
+		v = $(this).val();	//获取值
+		$(this).removeClass("allTipbg").removeAttr("tip");pass = true;	//初始化
+	}).on("blur","[jine]",function(){
+		if(!!v && !/^\+?(?!0+(\.00?)?$)\d+(\.\d\d?)?$/.test(v)){
+			allTips($(this).attr("tip","无效的数值。"),"无效的数值。");
+			pass = false;
+		} else if(!login) {
+			allTips($(this).attr("tip","登录已失效，请重新登录。"),"登录已失效，请重新登录。");
+			pass = false;
+		} else if(v > userBalance) {
+			allTips($(this).attr("tip","投资金额大于你的可用余额。"),"投资金额大于你的可用余额。");
+			pass = false;
+		} else if(v > 3000000) {
+			allTips($(this).attr("tip","投资金额超出最大投资额度。"),"投资金额超出最大投资额度。");
+			pass = false;
+		} else if(ze > 100 && v < 100) {
+			allTips($(this).attr("tip","最小购买金额是100元。"),"最小购买金额是100元。");
+			pass = false;
+		} else if(ze <= 100 && v != ze) {
+			allTips($(this).attr("tip","最小购买金额是" + ze + "元。"),"最小购买金额是" + ze + "元。");
+			pass = false;
+		} else if(v > ze) {
+			allTips($(this).attr("tip","投资金额大于剩余可加入金额。"),"投资金额大于剩余可加入金额。");
+			pass = false;
+		}
+	})
+	obj.on("click","[submit]",function(event){
+		var m = 1;
+		var btn = $(this);
+
+		obj.find("[required]").each(function(i,v){
+			if(!v.value) {
+				if(m) {
+					var s;
+					v.tagName == "SELECT" ? s = "请选择有效选项。" : s = "请填写此字段。";
+					allTips($(this).focus(),s);
+					m = 0;
+					pass = false;
+				}
+				$(this).addClass("allTipbg");
+			} else if($(this).is("[tip]")) {
+				if(m) {
+					allTips($(this).focus(),$(this).attr("tip"));
+					m = 0;
+					pass = false;
+				}
+				$(this).addClass("allTipbg");
+			}
+		});
+		if(btn.is(".offibd")) {
+			pass = false;
+			allTips(btn,'竞标已结束。')
+		} else if(btn.is(".off")) {
+			pass = false;
+			allTips(btn,'处理中。')
+		}
+		if(risk.tip()) pass = false;	//如果后台设置为强制评估，没有风险评估则无法提交，并弹窗提示评估
+		if(pass){
+			dialog({
+				title: "确定投资",
+				content: "确定使用￥"+v+"金额投该标的吗?",
+				skin: 'ui-alert',
+				width: 300,
+				cancel:true,
+				ok: false,
+				button: [{
+					value: "确定",
+					callback: function(){
+						var param = {
+							creditId: 6531,
+							bidAmount: v,
+							bidMode: 1
+						};
+						btn.lock(true);
+						dialog.getCurrent().statusbar('投资中，请稍后...')
+						$.post('/invest/bidCredit.action;jsessionid=AC506FEAB2240166AD66F20BB7118242',param,function(data){
+							if(data.success) {
+								var ss = data.message.split(",");
+								dialog.getCurrent().statusbar('').title("投资成功！").content('恭喜您成功投资，投资金额为'+numcode(data.numValue)+'元。').button([
+									{
+										value: "完成",
+										callback: function(){window.location.reload()}
+									}
+								]);
+								if(ss[0] == 1 && v >= parseInt(ss[1])) {
+									dialog.getCurrent().statusbar('恭喜！你已获得抽奖资格，请前往爱本地金服APP参与抽奖！');
+								}
+							} else {
+								dialog.getCurrent().title("投资失败！").content(data.message).button([
+									{
+										value: "查看其它借款",
+										callback: function(){window.location.href = 'list.jsp;jsessionid=AC506FEAB2240166AD66F20BB7118242';}
+									},
+									{
+										value: "确定",
+										callback: function(){window.location.reload()}
+									}
+								]);
+							}
+						},'json');
+						return false;
+					}
+				}]
+			}).showModal();
+		}
+	})
+};
+
+//投标记录
+var PageB = false;
+(function getjoinlist(i){
+	$.get('/invest/creditBidInfo.action;jsessionid=AC506FEAB2240166AD66F20BB7118242',{creditId:6531,pageIndex:i,pageSize:10},function(data){
+		var trStr = '';
+		if(data.bidList.length) {
+			$.each(data.bidList, function(i,v) {
+				trStr += '<tr><td>'+v.godphone+'</td><td>'+numcode(v.amount);
+				trStr += '</td><td>'+v.bidTime+'</td><td>'+v.bidModeName+'</td></tr>';
+			})
+		} else {
+			trStr = noData;
+		};
+		
+		$("[dele]").remove();
+		$(".join tbody").html(trStr);
+		$("#bidNum").text("（共"+data.recordCount+"条记录）");
+
+		if(!PageB && data.bidList.length){
+			$(".PageB").pagination({
+				items: data.recordCount,
+				onPageClick: function(page,event){
+					getjoinlist(page)
+					$(".join").append(loading);
+					$(".PageB").pagination('disable');
+				}
+			});
+			PageB = true;
+		}
+		if(PageB && data.bidList.length)$('.PageB').pagination('enable');
+	},'json')
+})(1);
+
+//预计收益
+var _creditType =1;//取还款方式
+var _bidMoney =3000000;	//融资金额
+var _deadline =7;	//时长
+var _dateType =1;	//时间单位
+var _creditMode =1;  //标的类型
+var _isShow = 0;	//是否显示加息
+var _raiseRate = 0;	//加息利率
+var _raiseAmount = 0;//加息额度
+function showValue(){
+	var obj = this.value;
+    var _creditUpperLimit = parseFloat(3000000);	//最大投标额度
+	var _creditDifferenceOfWindow = parseFloat(3000000-3000000);	//剩余可加入金额
+	if(!isNaN(obj)){
+		//利率
+		var _creditRate = 8;
+		if(_isShow > 0 && obj >= _raiseAmount){
+			_creditRate += _raiseRate;
+		}
+		_creditRate /= 100;
+		var yuji = 0;
+		if(_dateType == 1){
+			yuji = obj * _creditRate /360 * _deadline;
+		}else{
+			//等额本息
+			if(_dateType == 2 && _creditType == 2){
+				yuji = Math.pow(1+_creditRate/12, _deadline) * _deadline;
+				for(var i=0; i<_deadline; i++){
+					yuji -= Math.pow(1+_creditRate/12, i);
+				}
+				yuji *= obj * _creditRate/12 / (Math.pow(1+_creditRate/12, _deadline) - 1);
+			} else {
+				yuji = obj * _creditRate /360 * _deadline * 30;
+			}
+		}
+		$(".yuji i").text(numcode(yuji));
+	}
+	return false;
+}
+</script>
+
+<script src="https://isite.baidu.com/lmp/getbid?client=875288&amp;client_type=kst&amp;referrer=&amp;url=https%3A%2F%2Fwww.ibdp2p.com%2Finvest%2FcreditInfo.action%3FcreditId%3D6531&amp;ds=400x2124&amp;ln=zh-CN&amp;si=1512711971266&amp;callback=getClueInfo&amp;cookie=true"></script></body></html>

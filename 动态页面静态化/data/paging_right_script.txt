@@ -1,0 +1,30 @@
+﻿<script language="javascript">
+/*-----------------*/
+//点击分页
+$(function(){
+	$(".paging").pagination({
+		pages: #totalPages#,
+		edges: 0,
+		prevText: "上一页",
+		nextText: "下一页",
+		onPageClick: function(page,event) {
+			callback:getbidlist(page)
+		}
+	});
+})
+var getbidlist = function(i){
+	var strs = '';
+	$.getJSON("json/#CPID#-"+i+".json",function(data){
+		for(var j = 0;j < data.length;j++) {
+			strs += '<li><div class="t-name">' + data[j].godname + '</div>';
+			strs += '<div class="t-money">' + data[j].amount + '</div>';
+			strs += '<div class="t-time">' + data[j].time + '</div>';
+			strs += '<div class="t-sort">' + data[j].bidModeName + '</div></li>';
+		}
+		$(".record-list").html(strs);
+	})
+	return false
+};
+getbidlist(1);
+/*-----------------*/
+</script>

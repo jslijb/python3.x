@@ -1,0 +1,63 @@
+阿里云rds 物理备份的数据恢复到本地
+在192.168.1.208上挂载192.168.1.25\e\backuprds 
+mount.cifs //192.168.1.25/e/backuprds /backuprds -o user=test,password=123456
+bash rds_backup_extract.sh -f /backuprds/hins2852765_data_20171218042442.tar.gz -C /fastdfs/mysql/data/
+[root@localhost ~]# cd /fastdfs/mysql/data/
+[root@localhost data]# ll
+total 3698188
+-rw-rw---- 1 mysql mysql         56 Dec 18 15:08 auto.cnf
+-rw-rw---- 1 mysql mysql        450 Dec 18 04:42 backup-my.cnf
+-rw-rw---- 1 mysql mysql  578813952 Dec 18 15:08 ibdata1
+drwxr-xr-x 2 mysql mysql      12288 Dec 18 15:04 ibd_dbforp2p
+-rw-r--r-- 1 mysql mysql 1572864000 Dec 18 15:08 ib_logfile0
+-rw-r--r-- 1 mysql mysql 1572864000 Dec 18 15:06 ib_logfile1
+-rw-r----- 1 mysql root        2369 Dec 18 15:12 localhost.localdomain.err
+-rw-rw---- 1 mysql mysql          5 Dec 18 15:08 localhost.localdomain.pid
+-rw-rw---- 1 mysql mysql   60186808 Dec 18 04:42 log000000000006.tokulog27
+drwxr-xr-x 2 mysql mysql       4096 Dec 18 15:04 mysql
+drwxr-xr-x 2 mysql mysql       4096 Dec 18 15:04 performance_schema
+drwxr-xr-x 2 mysql mysql         20 Dec 18 15:04 test
+-rw-rw---- 1 mysql mysql      16384 May 25  2017 tokudb.directory
+-rw-rw---- 1 mysql mysql      16384 May 25  2017 tokudb.environment
+-rw-rw---- 1 mysql mysql      16384 May 25  2017 tokudb.rollback
+-rw-rw---- 1 mysql mysql         74 Dec 18 04:42 xtrabackup_binlog_info
+-rw-r--r-- 1 mysql mysql         24 Dec 18 15:06 xtrabackup_binlog_pos_innodb
+-rw-rw---- 1 mysql mysql         99 Dec 18 15:06 xtrabackup_checkpoints
+-rw-rw---- 1 mysql mysql        681 Dec 18 04:42 xtrabackup_info
+-rw-rw---- 1 mysql mysql    2097152 Dec 18 15:05 xtrabackup_logfile
+-rw-rw---- 1 mysql mysql         78 Dec 18 04:42 xtrabackup_slave_filename_info
+-rw-rw---- 1 mysql mysql        114 Dec 18 04:42 xtrabackup_slave_info
+
+[root@localhost data]# du -sh .
+27G 
+
+注意这个文件夹很大，所在的磁盘要比这个容量大
+
+innobackupex --defaults-file=/tmp/my.cnf --apply-log /fastdfs/mysql/data
+
+显示下面的，表示恢复成功
+xtrabackup: starting shutdown with innodb_fast_shutdown = 1
+InnoDB: FTS optimize thread exiting.
+InnoDB: Starting shutdown...
+InnoDB: Shutdown completed; log sequence number 165909377417
+171218 15:06:32  innobackupex: completed OK!
+
+修改数据目录的属主和属组为mysql
+[root@localhost ~]# chown -R mysql:mysql  /fastdfs/mysql/data/
+
+启动mysql
+[root@localhost ~]# mysqld_safe --defaults-file=/tmp/my.cnf --user=mysql --datadir=/fastdfs/mysql/data
+
+启动成功后就可以进入mysql，root没有密码
+
+mysql -uroot
+
+创建一个用户就可以进行远程连接了
+
+mysql> grant all privileges on *.* to 'ibd'@'%' identified by 'tiIXSUYjR4tZAOnQ';
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> flush privileges;
+Query OK, 0 rows affected (0.00 sec)
+
+

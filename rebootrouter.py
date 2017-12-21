@@ -1,0 +1,18 @@
+from selenium import webdriver
+import time
+dr = webdriver.Chrome()
+dr.get("http://192.168.1.1")
+dr.find_element_by_id('txt_usr_name').clear()
+dr.find_element_by_id('txt_usr_name').send_keys('ibdp2p')
+dr.find_element_by_id('txt_password').send_keys('sjyibdp2p')
+time.sleep(2)
+dr.find_element_by_xpath('//*[@id="btn_logon"]').click()
+time.sleep(3)
+dr.find_element_by_xpath('//*[@id="btn_confirm"]').click()
+time.sleep(3)
+dr.switch_to_frame(0)
+dr.find_element_by_id("a38").click()
+#dr.find_element_by_id("a39").click()
+time.sleep(2)
+#dr.find_element_by_id('tr_tab').click()
+dr.find_element_by_class_name('TAB_NO_SELECT')

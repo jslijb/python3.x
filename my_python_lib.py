@@ -90,26 +90,36 @@ def check_intel_ip(ip):
     pattern_255 = re.match(r'\b.*\.255.255.255\b', ip, re.I)
     if pattern:
         if pattern_255:
-            print(ip, 'is a broadcast address')
+            print(ip, 'is a broadcast address,不能用于互联网，请重新输入')
+            stat = 0
         elif pattern_c:
-            print(ip, 'is a C class private address')
+            print(ip, 'is a C class private address，不能用于互联网，请重新输入')
+            stat = 2
         elif pattern_b:
-            print(ip, 'is a B class private address')
+            print(ip, 'is a B class private address，不能用于互联网，请重新输入')
+            stat = 3
         elif pattern_a:
-            print(ip, 'is a A class private address')
+            print(ip, 'is a A class private address，不能用于互联网，请重新输入')
+            stat = 4
         elif pattern_d:
-            print(ip, 'is a D class multicast address')
+            print(ip, 'is a D class multicast address，不能用于互联网，请重新输入')
+            stat = 5
         elif pattern_e:
-            print(ip, 'is a E class reserved address')
+            print(ip, 'is a E class reserved address，不能用于互联网，请重新输入')
+            stat = 6
         elif pattern_127:
-            print(ip, 'is a local loop test address ')
+            print(ip, 'is a local loop test address，不能用于互联网，请重新输入')
+            stat = 7
         elif pattern_100:
-            print(ip, 'is a telecom operator reserved address')
+            print(ip, 'is a telecom operator reserved address，不能用于互联网，请重新输入')
+            stat = 8
         elif pattern_169:
-            print(ip, 'is a local reserved address')
+            print(ip, 'is a local reserved address，不能用于互联网，请重新输入')
+            stat = 9
 
         else:
             # print(ip,'is a normal Internet address')
-            return ip
+            stat = 1
+            return stat
     else:
         print("The ip format is error")

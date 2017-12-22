@@ -4,6 +4,7 @@ import time
 import  sys
 import os
 import mysql.connector
+from my_python_lib import check_intel_ip
 dr = webdriver.Chrome()
 ecs_dict = {"sit": "i-94mvzolmz",
             "prd-1": "i-947f0upfu",
@@ -72,46 +73,15 @@ def check_secritygroup_exist(secritygroup_name):
 
 def check_secritygroup_exist_ecs(ecs_name,secritygroup_name):
     '''检查某个ECS是否属于某个安全组，如果属于就返回1，不属于就返回0'''
-    # 调用这个函数的目的是，让secritygroup_dict 这个字典的内容保持最新，最全
-    # read_secritygroup_ecs_dict()
-    # if secritygroup_name in secritygroup_ecs_dict.keys():
-    #     return 1
-    # else:
-    #     print("这个安全组没有任何实例")
-    #     return 0
+
     conn = conn_mysql()
     cursor = conn.cursor()
-    cursor.execute("select secritygroup_name from ecs WHERE  ecs_name = %s",(ecs_name,))
+    cursor.execute("select secritygroup_new_name from ecs WHERE  ecs_name = %s",(ecs_name,))
     values = cursor.fetchall()
     if ''.join(values.pop()) == secritygroup_name:
         return 1
     else:
         return 0
-
-
-def save_secritygroup_ecs_dict():
-    if not secritygroup_ecs_dict == {}:
-        secritygroup_ecs_dict_w = open("secritygroup_dict_ecs.txt", 'w')
-        for key,val in secritygroup_ecs_dict.items():
-            kv = key + ":" + str(val)
-            secritygroup_ecs_dict_w.write(kv)
-            # secritygroup_ecs_dict_w.write(":")
-            # secritygroup_ecs_dict_w.writelines(val)
-            secritygroup_ecs_dict_w.write('\n')
-        secritygroup_ecs_dict_w.close()
-
-def read_secritygroup_ecs_dict():
-    '''读取文件的内容，并存储到字典中，方便安全组id和安全组名字之间的转换'''
-    if os.path.exists("e:\\\\python\\secritygroup_dict_ecs.txt"):
-        secritygroup__ecs_dict_r = open("secritygroup_dict_ecs.txt", 'r')
-        for line in secritygroup__ecs_dict_r.readlines():
-            line = line.strip().split(":")
-            key = line[0]
-            val = line[1].split(",")
-            secritygroup_ecs_dict[key] = val
-            secritygroup__ecs_dict_r.close()
-    # print(secritygroup_ecs_dict)
-    return secritygroup_ecs_dict
 
 def print_enmu():
     print("请根据提示输入1-7这几个数，此程序只能手动结束")
@@ -119,9 +89,8 @@ def print_enmu():
     print("2:配置安全组规则，内网规则")
     print("3:配置安全组规则，外网规则")
     print("4:将ECS实例加入安全组中")
-    print("5:将ECS实例从安全组中删除")
-    print("6:删除安全组")
-    print("7：退出程序")
+    print("5:删除安全组")
+    print("6：退出程序")
 
 def open_aly_index():
     '''登录阿里云控制台首页'''
@@ -292,10 +261,15 @@ def check_secritygroup_discrbe():
 def check_ip():
     '''检查输入的ip地址是否符合要求'''
     ip = input("请输入公网的ip地址：")
+    code = check_intel_ip(ip)
     if ip == '10':
         stat = 0
-    elif not ip.isdecimal():
-
+    elif code == 1:
+        stat = 1
+    else:
+        stat = 2
+    ip = ip + '/32'
+    return (ip,stat)
 
 def create_secritygroup(secritygroup_name,secritygroup_discrbe):
     '''创建安全组'''
@@ -321,6 +295,11 @@ def create_secritygroup(secritygroup_name,secritygroup_discrbe):
 
 
 def remove_secritygroup(secritygroup_name):
+    '''删除安全组
+    删除安全组的条件：
+        1、安全组中没有任何的ECS实例
+        2、安全组没有和任何安全组实施关联策略
+    '''
     code = check_secritygroup_exist(secritygroup_name)
     if code == 1:
         dr.find_element_by_xpath("/html/body/div[1]/div[2]/div[2]/div[3]/div[2]/div[1]/div/div/div[2]/div[2]/div/div[2]/table[1]/tbody/tr/td[1]/input").click()
@@ -382,6 +361,7 @@ def conf_secritygroup_intranet(secritygroup_name,secritygroup_grant_name,port,co
 
 def conf_secritygroup_intel(secritygroup_name,port,ip,secritygroup_desc):
     conf_secritygroup(secritygroup_name)
+    dr.refresh()
     # 选择公网入网方向
     dr.find_element_by_xpath("/html/body/div[1]/div[2]/div[2]/div[3]/div[2]/div[1]/div[2]/div/div/div/div/div/ul/li[3]/a").click()
     time.sleep(1)
@@ -389,16 +369,16 @@ def conf_secritygroup_intel(secritygroup_name,port,ip,secritygroup_desc):
     dr.find_element_by_xpath("/html/body/div[1]/div[2]/div[2]/div[3]/div[2]/div[1]/div[1]/div/div/div[2]/div/div/button[3]").click()
     time.sleep(1)
     # 输入端口号
-    dr.find_element_by_xpath("/html/body/div[8]/div/div/div/div[2]/form/div[5]/div[1]/input").send_keys(port)
+    dr.find_element_by_xpath("/html/body/div[7]/div/div/div/div[2]/form/div[5]/div[1]/input").send_keys(port)
     time.sleep(1)
     # 输入ip 地址
-    dr.find_element_by_xpath("/html/body/div[8]/div/div/div/div[2]/form/div[8]/div[1]/textarea").send_keys(ip)
+    dr.find_element_by_xpath("/html/body/div[7]/div/div/div/div[2]/form/div[8]/div[1]/textarea").send_keys(ip)
     time.sleep(1)
     # 输入规则描述信息
-    dr.find_element_by_xpath("/html/body/div[8]/div/div/div/div[2]/form/div[9]/div/textarea").send_keys(secritygroup_desc)
+    dr.find_element_by_xpath("/html/body/div[7]/div/div/div/div[2]/form/div[9]/div/textarea").send_keys(secritygroup_desc)
     time.sleep(1)
     # 点击确定按钮
-    dr.find_element_by_xpath("/html/body/div[8]/div/div/div/div[3]/button[1]").click()
+    dr.find_element_by_xpath("/html/body/div[7]/div/div/div/div[3]/button[1]").click()
     time.sleep(1)
 
 
@@ -406,8 +386,10 @@ def ecs_add_to_secritygroup (ecs_name,secritygroup_name):
     '''将某个ECS实例添加至某个安全组中'''
     # 先检查这个安全组中是否存在此ECS
 
-    dr.get("https://ecs.console.aliyun.com/#/securityGroup/region/cn-shenzhen")
-    dr.find_element_by_xpath("/html/body/div[1]/div[2]/div[2]/div[3]/div[2]/div[1]/div/div/div[2]/div[2]/div/div[1]/div[1]/div/div/div/form/div[2]/input").send_keys(secritygroup_name)
+    open_secritygroup_index()
+    dr.refresh()
+    secritygroup_id = get_old_secritygroup_id(secritygroup_name)
+    dr.find_element_by_xpath("/html/body/div[1]/div[2]/div[2]/div[3]/div[2]/div[1]/div/div/div[2]/div[2]/div/div[1]/div[1]/div/div/div/form/div[2]/input").send_keys(secritygroup_id)
     dr.find_element_by_xpath("/html/body/div[1]/div[2]/div[2]/div[3]/div[2]/div[1]/div/div/div[2]/div[2]/div/div[1]/div[1]/div/div/div/form/button").click()
     time.sleep(1)
     dr.find_element_by_xpath("/html/body/div[1]/div[2]/div[2]/div[3]/div[2]/div[1]/div/div/div[2]/div[2]/div/div[2]/table[1]/tbody/tr/td[9]/div/div/button[4]").click()
@@ -422,45 +404,42 @@ def ecs_add_to_secritygroup (ecs_name,secritygroup_name):
     time.sleep(1)
     dr.find_element_by_xpath('/html/body/div[7]/div/div/div/div[3]/button[1]').click()
 
+    conn = conn_mysql()
+    cursor = conn.cursor()
+    cursor.execute('select secritygroup_new_name from ecs WHERE ecs_name = %s',(ecs_name,))
+    result = cursor.fetchall()
+    secritygroup_old_name = result[0][0]
+    cursor.execute("update ecs set secritygroup_old_name=%s where ecs_name=%s", (secritygroup_old_name, ecs_name))
+    cursor.execute("update ecs set secritygroup_new_name=%s where ecs_name=%s", (secritygroup_name,ecs_name))
+    conn.commit()
+    return secritygroup_old_name
 
-def ecs_remvoe_from_secritygroup(ecs_id,secritygroup_id):
+def ecs_remvoe_from_secritygroup(ecs_name,secritygroup_name):
     '''将某个ECS实例从某个安全组中删除'''
-    dr.get("https://ecs.console.aliyun.com/#/securityGroup/region/cn-shenzhen")
+    open_secritygroup_index()
+    dr.refresh()
+    secritygroup_id = get_old_secritygroup_id(secritygroup_name)
+    # 向搜索框里输入安全组id
     dr.find_element_by_xpath('/html/body/div[1]/div[2]/div[2]/div[3]/div[2]/div[1]/div/div/div[2]/div[2]/div/div[1]/div[1]/div/div/div/form/div[2]/input').send_keys(secritygroup_id)
+    time.sleep(1)
+    #点击搜索按钮
     dr.find_element_by_xpath('/html/body/div[1]/div[2]/div[2]/div[3]/div[2]/div[1]/div/div/div[2]/div[2]/div/div[1]/div[1]/div/div/div/form/button').click()
     time.sleep(1)
-    dr.find_element_by_xpath('/html/body/div[1]/div[2]/div[2]/div[3]/div[2]/div[1]/div/div/div[2]/div[2]/div/div[2]/table[1]/tbody/tr/td[1]/input').click()
-    time.sleep(1)
+    # 点击管理实例
     dr.find_element_by_xpath('/html/body/div[1]/div[2]/div[2]/div[3]/div[2]/div[1]/div/div/div[2]/div[2]/div/div[2]/table[1]/tbody/tr/td[9]/div/div/button[4]').click()
     time.sleep(1)
-    dr.find_element_by_xpath(
-        '/html/body/div[1]/div[2]/div[2]/div[3]/div[2]/div[1]/div[2]/div/div/div/div/div/div/div/div[1]/div[1]/div/div/div/form/div[1]/select').click()
+    # 输入 ecs 实例名称
+    dr.find_element_by_xpath('/html/body/div[1]/div[2]/div[2]/div[3]/div[2]/div[1]/div[2]/div/div/div/div/div/div/div/div[1]/div[1]/div/div/div/form/div[2]/input').send_keys(ecs_name)
     time.sleep(1)
-    dr.find_element_by_xpath('/html/body/div[1]/div[2]/div[2]/div[3]/div[2]/div[1]/div[2]/div/div/div/div/div/div/div/div[1]/div[1]/div/div/div/form/div[1]/select').send_keys('实例ID')
+    # 勾选此 ecs 实例
+    dr.find_element_by_xpath("/html/body/div[1]/div[2]/div[2]/div[3]/div[2]/div[1]/div[2]/div/div/div/div/div/div/div/div[2]/table[1]/tbody/tr/td[1]/input").click()
     time.sleep(1)
-    dr.find_element_by_xpath('/html/body/div[1]/div[2]/div[2]/div[3]/div[2]/div[1]/div[2]/div/div/div/div/div/div/div/div[1]/div[1]/div/div/div/form/div[1]/select').click()
+    # 点击移除安全组按钮
+    dr.find_element_by_xpath("/html/body/div[1]/div[2]/div[2]/div[3]/div[2]/div[1]/div[2]/div/div/div/div/div/div/div/div[2]/table[2]/tfoot/tr/td[2]/div[1]/div/div/button").click()
     time.sleep(1)
-    dr.find_element_by_xpath('/html/body/div[1]/div[2]/div[2]/div[3]/div[2]/div[1]/div[2]/div/div/div/div/div/div/div/div[1]/div[1]/div/div/div/form/div[2]/input').send_keys(ecs_id)
-    time.sleep(1)
-    # 搜索ecs 实例id 是否在这个安全组中
-    dr.find_element_by_xpath('/html/body/div[1]/div[2]/div[2]/div[3]/div[2]/div[1]/div[2]/div/div/div/div/div/div/div/div[1]/div[1]/div/div/div/form/button').click()
-    time.sleep(1)
-    try:
-        # 选中要删除的ECS，如果没有就会抛出异常，下面的代码将捕获异常
-        dr.find_element_by_xpath('/html/body/div[1]/div[2]/div[2]/div[3]/div[2]/div[1]/div[2]/div/div/div/div/div/div/div/div[2]/table[1]/tbody/tr/td[1]/input').click()
-    except:
-        #保存搜索的结果
-        search_result = dr.find_element_by_xpath("/html/body/div[1]/div[2]/div[2]/div[3]/div[2]/div[1]/div[2]/div/div/div/div/div/div/div/div[4]/div/div/span").text
-        if search_result == "没有查询到符合条件的记录":
-            print(ecs_id,'这台ECS，不在这个',secritygroup_id,'安全组中')
-            sys.exit(2)
-    # dr.find_element_by_xpath('/html/body/div[1]/div[2]/div[2]/div[3]/div[2]/div[1]/div[2]/div/div/div/div/div/div/div/div[2]/table[1]/tbody/tr/td[1]/input').click()
-    time.sleep(1)
-    #点击"移出安全组"按钮
-    dr.find_element_by_xpath('/html/body/div[1]/div[2]/div[2]/div[3]/div[2]/div[1]/div[2]/div/div/div/div/div/div/div/div[2]/table[2]/tfoot/tr/td[2]/div[1]/div/div/button').click()
-    time.sleep(1)
-    #点击确定按钮
-    dr.find_element_by_xpath('/html/body/div[7]/div/div/div/div[3]/button[1]').click()
+    # 点击确定按钮
+    dr.find_element_by_xpath("/html/body/div[7]/div/div/div/div[3]/button[1]").click()
+
 
 
 def input_item():
@@ -469,7 +448,7 @@ def input_item():
     while True:
         print_enmu()
         try:
-            item = int(input("请输入编号 1-5："))
+            item = int(input("请输入编号 1-6："))
         except:
             print("输入有误，请重新输入")
             input_item()
@@ -490,7 +469,6 @@ def input_item():
                 else:
                     continue
 
-
             elif item == 2:
                 print("请注意第一次输入的安全组名称是待配置的安全组名称")
                 print("请注意第二次输入的安全组名称是授权那个安全组访问上一个安全组")
@@ -509,50 +487,39 @@ def input_item():
                 conf_secritygroup_intranet(secritygroup_name,secritygroup_grant_name,port,conf_discrbe)
 
             elif item ==3:
+                secritygroup_name_3,name_stat_3 = check_secritygroup_name()
+                if name_stat_3 != 4:
+                    continue
+                port_3,port_stat_3 = check_port()
+                if port_stat_3 != 1:
+                    continue
+                ip,ip_stat = check_ip()
+                if ip_stat != 1:
+                    continue
+                conf_discrbe_3,discrbe_stat_3 = check_secritygroup_discrbe()
+                if discrbe_stat_3 != 1:
+                    continue
 
-                ecs_secritygroup_code = check_secritygroup_exist_ecs(ecs_name, secritygroup_name)
-                if ecs_secritygroup_code ==0 :
-                    ecs_add_to_secritygroup(ecs_name,secritygroup_name)
-                else:
-                    print(ecs_name, "已经在", secritygroup_name, "这个安全组中，不需要加入")
+                conf_secritygroup_intel(secritygroup_name_3,port_3,ip,conf_discrbe_3)
 
             elif item ==4:
-                secritygroup_name = input("请输入待加入安全组的别名，如prd-noddos-slb,如需要回到初始菜单页面，请输入10：")
-                if secritygroup_name == '10':
+                secritygroup_name,name_stat_4 = check_secritygroup_name()
+                if name_stat_4 != 4:
                     continue
-                secritygroup_code = check_secritygroup_exist(secritygroup_name)
-                if secritygroup_code == 0:
-                    print("所输入的安全组名称不存在，请重新输入")
-                    break
-
-                ecs_name = input("请输入需要加入此安全组ECS的别名,如sit,如需要回到初始菜单页面，请输入10：")
-                if ecs_name == '10':
+                ecs_name = input("请输入ECS的别名：")
+                ecs_stat = check_ecs_exist(ecs_name)
+                if ecs_stat != 1:
                     continue
-                ecs_code = check_ecs_exist(ecs_name)
-                if ecs_code == 0:
-                    print("输入的ECS名称不存在，请重新输入")
+                secritygroup_exist_ecs_stat = check_secritygroup_exist_ecs(ecs_name,secritygroup_name)
+                if secritygroup_exist_ecs_stat == 1:
                     continue
-
-                ecs_secritygroup_code = check_secritygroup_exist_ecs(ecs_name, secritygroup_name)
-                if ecs_secritygroup_code == 1:
-                    ecs_remvoe_from_secritygroup(ecs_name, secritygroup_name)
                 else:
-                    print(ecs_name, "不在", secritygroup_name, "这个安全组中，无法删除")
+                    secritygroup_old_name = ecs_add_to_secritygroup(ecs_name,secritygroup_name)
+                    ecs_remvoe_from_secritygroup(ecs_name,secritygroup_old_name)
+
 
             elif item ==5:
-                # secritygroup_name = input("请输入需要删除的安全组别名,如需要回到初始菜单页面，请输入10：")
-                # if secritygroup_name == '10':
-                #     continue
-                secritygroup_name,name_stat_5 = check_secritygroup_name()
-                if name_stat_5 == 1:
-                    code_secritygroup_ecs_5 = check_secritygroup_exist_ecs(ecs_name,secritygroup_name)
-                    if code_secritygroup_ecs_5 == 0:
-                        remove_secritygroup(secritygroup_name)
-                    else:
-                        print("安全组中还有ECS实例，不能删除")
-                else:
-                    continue
-                # print(secritygroup_dict)
+                pass
             elif item ==6:
                 print("程序结束")
                 sys.exit(1)
@@ -567,7 +534,7 @@ def create_table_mysql():
     #创建secritygroup 表
     cursor.execute('create table IF NOT EXISTS secritygroup (secritygroup_id char(25) primary key,secritygroup_name varchar(30) not null UNIQUE ,secritygroup_desc varchar(80) not null)')
     # 创建 ecs 表
-    cursor.execute('create table IF NOT EXISTS ecs ( ecs_id char(25) primary key,ecs_name varchar(30) not null UNIQUE ,secritygroup_name varchar(30) not null)')
+    cursor.execute('create table IF NOT EXISTS ecs ( ecs_id char(25) primary key,ecs_name varchar(30) not null UNIQUE ,secritygroup_new_name varchar(30) not null UNIQUE,secritygroup_old_name varchar(30))')
 
 
 
